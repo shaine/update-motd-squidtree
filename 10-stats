@@ -1,0 +1,14 @@
+#!/bin/bash
+
+lastlog=$(last -1  $USER | head -1 | cut -c 23- | sed 's/ \+/ /g')
+up=$(uptime | grep -ohe 'up .*' | sed 's/,//g' | awk '{ print $2" "$3 }')
+sysload=$(uptime | sed 's/,//g' | grep -ohe 'load average[s:][: ].*' | awk '{ print $3" (1 min) "$4" (5 min) "$5" (15 min)" }')
+mem=$(free -m | sed -n 2p | awk '{ print $2" Used: "$3" Free: "$4"" }')
+memcache=$(free -m | sed -n 3p | awk '{ print "Free Cached: "$3"" }')
+memswap=$(free -m | sed -n 4p | awk '{ print "Swap in Use: "$3"" }')
+
+# Print Output
+echo -en "  \e[35mLast Login....:\e[0m \e[36m$lastlog\e[0m\n"
+echo -en "  \e[35mUptime........:\e[0m \e[36m$up\e[0m\n"
+echo -en "  \e[35mLoad..........:\e[0m \e[36m$sysload\e[0m\n"
+echo -en "  \e[35mMemory MB.....:\e[0m \e[36m$mem $memcache $memswap\e[0m\n"
