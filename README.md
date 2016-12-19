@@ -5,6 +5,8 @@ Better MOTD scripts for Ubuntu
 ## Set up
   
   * Install toilet: `sudo apt-get install toilet`
+  * Install elinks: `sudo apt-get install elinks`
+  * Install lolcat: `sudo gem install lolcat`
   * Add fonts: `curl http://www.figlet.org/fonts/big.flf > big.flf; sudo mv big.flf /usr/share/figlet`
   * Install fortune: `sudo apt-get install fortune`
   * Install cowsay: `sudo apt-get install cowsay`
